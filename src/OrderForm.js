@@ -128,7 +128,7 @@ export default function OrderForm(props){
                         onChange={onChange}
                         />
                 </label>
-                <button>Add to Order</button>
+                <button disabled={disabled}>Add to Order</button>
                 <div id="errorFrame">
                     <p>{formErrors.name}</p>
                     <p>{formErrors.size}</p>

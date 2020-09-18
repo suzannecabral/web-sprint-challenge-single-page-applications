@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Home from './Home'
 import OrderForm from './OrderForm'
 import Thankyou from './Thankyou'
@@ -114,6 +114,18 @@ const App = () => {
     setOrders([...orders,newOrder])
 
   }
+
+  //-----------------------------------//
+  //          Side Effects             //
+  //-----------------------------------//
+
+  useEffect(() => {
+    schema.isValid(formValues)
+      .then(valid => {
+        setDisabled(!valid)
+      })
+  }, [formValues])
+
 
   return (
     <>
