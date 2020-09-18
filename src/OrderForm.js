@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function OrderForm(props){
     const { 
-        formValues, 
+        // formValues, 
         change,
-        orders,
+        // orders,
         submit,
         disabled,
         formErrors
