@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Home from './Home'
 import OrderForm from './OrderForm'
 import Thankyou from './Thankyou'
@@ -10,7 +10,42 @@ import {
 } from "react-router-dom"
 
 
+  //-----------------------------------//
+  //         Initial Values            //
+  //-----------------------------------//
+const initialFormValues = 
+{
+  name:'',
+  pizzaSize:'',
+  cheeseTopping:false,
+  pepperoniTopping:false,
+  mushroomsTopping:false,
+  pineappleTopping:false,
+  canadianBaconTopping:false,
+  jalapenosTopping:false,
+  instructions:'',
+}
+
 const App = () => {
+  //-----------------------------------//
+  //         States                    //
+  //-----------------------------------//
+  const [ formValues, setFormValues ] = useState(initialFormValues)
+
+  //-----------------------------------//
+  //          Event Handlers           //
+  //-----------------------------------//
+
+  const change = (name, value) => {
+
+    //validate
+    // [!] add this
+
+    //send to formValues state
+    setFormValues({...formValues, [name]:value})
+
+  }
+
   return (
     <>
     <Router>
@@ -22,7 +57,10 @@ const App = () => {
       
       <Switch>
        <Route path="/pizza">
-          <OrderForm />
+          <OrderForm 
+            formValues={formValues}
+            change={change}
+          />
         </Route>
 
         <Route path="/thankyou">

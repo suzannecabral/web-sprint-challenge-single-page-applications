@@ -2,7 +2,6 @@ import React from 'react'
 import {
     Link 
   } from "react-router-dom"
-  import OrderForm from './OrderForm'
 
 export default function Home(props){
     return(

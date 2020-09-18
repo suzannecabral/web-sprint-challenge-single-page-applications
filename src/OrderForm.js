@@ -1,13 +1,40 @@
 import React from 'react'
 
 export default function OrderForm(props){
+    const { formValues, change }=props
+    console.log("Order form values:", formValues)
+    console.log("Order form change fn:", change)
+
+    //-----------------------------------//
+    //          Event Handlers           //
+    //-----------------------------------//
+
+    const onChange = (evt) => {
+
+        //destructures event object properties
+        const { name, value, type, checked } = evt.target
+
+        //handles checkboxes
+        const valueToUse = type === 'checkbox' ? checked : value
+
+        //calls back to the state changing function in app.js
+        // needs to be passed in as a prop
+        // the event listener function, NOT the actual state function
+        change (name, valueToUse)
+    }
+
+
     return(
         <div id="orderForm">
             <h2>Build your pizza:</h2>
             <form>
                 <label htmlFor="name">
-                    Name:
-                    <input type="text" name="name"/>
+                    Your Name:
+                    <input 
+                        type="text" 
+                        name="name"
+                        onChange={onChange}
+                        />
                 </label>
                 <label htmlFor="pizzaSize">
                     Pizza Size:
