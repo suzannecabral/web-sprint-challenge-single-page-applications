@@ -16,13 +16,24 @@ const App = () => {
     <Router>
       <nav>
           <Link to="/">Home</Link>
-          <Link to="/order">Order</Link>
+          <Link to="/pizza">Order</Link>
       </nav>
 
       
-      <Home />
-      <OrderForm />
-      <Thankyou />
+      <Switch>
+       <Route path="/pizza">
+          <OrderForm />
+        </Route>
+
+        <Route path="/thankyou">
+          <Thankyou />
+        </Route>
+
+        <Route path="/">
+         <Home />
+        </Route>
+
+      </Switch>
     </Router>
     </>
   );
