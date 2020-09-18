@@ -18,7 +18,7 @@ import schema from './formSchema'
 const initialFormValues = 
 {
   name:'',
-  pizzaSize:'Small',
+  pizzaSize:'',
   cheeseTopping:false,
   pepperoniTopping:false,
   mushroomsTopping:false,
@@ -59,15 +59,21 @@ const App = () => {
 
   const validate = (name, value) => {
     yup
+      //schema needs to be linked
       .reach(schema, name)
+
+      //this is the yup validate function
+      //not referring to one of my funtions
       .validate(value)
+
+      //clears errros from formErrors state if valid
       .then(valid => {
         setFormErrors({...formErrors, [name]: ""})
       })
+
+      //sets errors to formErrors state
       .catch(err => {
-        // debugger
         setFormErrors({...formErrors,[name]: err.errors[0]})
-        // console.log(err)
       })
   }
 
@@ -126,6 +132,7 @@ const App = () => {
             orders={orders}
             submit={submit}
             disabled={disabled}
+            formErrors={formErrors}
           />
         </Route>
 

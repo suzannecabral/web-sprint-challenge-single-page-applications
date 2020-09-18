@@ -6,11 +6,13 @@ export default function OrderForm(props){
         change,
         orders,
         submit,
-        disabled
+        disabled,
+        formErrors
     }=props
-    console.log("Order form button disabled:", disabled)
+    // console.log("Order form button disabled:", disabled)
     // console.log("Order form values:", formValues)
     // console.log("Order form change fn:", change)
+    
 
     //-----------------------------------//
     //          Event Handlers           //
@@ -61,6 +63,7 @@ export default function OrderForm(props){
                         name="pizzaSize"
                         onChange={onChange}
                         >
+                        <option></option>
                         <option>Small</option>
                         <option>Medium</option>
                         <option>Large</option>
@@ -115,7 +118,7 @@ export default function OrderForm(props){
                             name="jalapenosTopping"
                             onChange={onChange}
                             />
-                    </label>
+                    </label> 
                 </div>
                 <label htmlFor="instructions">
                     Additional Instructions:
@@ -126,6 +129,10 @@ export default function OrderForm(props){
                         />
                 </label>
                 <button>Add to Order</button>
+                <div id="errorFrame">
+                    <p>{formErrors.name}</p>
+                    <p>{formErrors.size}</p>
+                </div>
             </form>
         </div>
     )
