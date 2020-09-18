@@ -1,17 +1,29 @@
 import React from 'react'
+import Home from './Home'
 import OrderForm from './OrderForm'
-import Navbar from './Navbar'
 import Thankyou from './Thankyou'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link 
+} from "react-router-dom"
+
 
 const App = () => {
   return (
     <>
-      <Navbar />
-      <h1>Lambda Eats</h1>
-      <p>Delivering food to hungry coders</p>
+    <Router>
+      <nav>
+          <Link to="/">Home</Link>
+          <Link to="/order">Order</Link>
+      </nav>
 
+      
+      <Home />
       <OrderForm />
       <Thankyou />
+    </Router>
     </>
   );
 };
