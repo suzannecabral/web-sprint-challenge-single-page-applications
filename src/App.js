@@ -16,7 +16,7 @@ import {
 const initialFormValues = 
 {
   name:'',
-  pizzaSize:'',
+  pizzaSize:'Small',
   cheeseTopping:false,
   pepperoniTopping:false,
   mushroomsTopping:false,
@@ -26,11 +26,14 @@ const initialFormValues =
   instructions:'',
 }
 
+const initialOrders=[]
+
 const App = () => {
   //-----------------------------------//
   //         States                    //
   //-----------------------------------//
   const [ formValues, setFormValues ] = useState(initialFormValues)
+  const [ orders, setOrders ] = useState(initialOrders)
 
   //-----------------------------------//
   //          Event Handlers           //
@@ -43,6 +46,30 @@ const App = () => {
 
     //send to formValues state
     setFormValues({...formValues, [name]:value})
+  }
+
+  const submit = () => {
+
+    //gather validated order info
+    //and trim whitespace
+    const newOrder = {
+      name:formValues.name.trim(),
+      pizzaSize:formValues.pizzaSize,
+      cheeseTopping:formValues.cheeseTopping,
+      pepperoniTopping:formValues.pepperoniTopping,
+      mushroomsTopping:formValues.mushroomsTopping,
+      pineappleTopping:formValues.pineappleTopping,
+      canadianBaconTopping:formValues.canadianBaconTopping,
+      jalapenosTopping:formValues.jalapenosTopping,
+      instructions:formValues.instructions.trim(),
+    }
+
+    //test submit
+    console.log('User submitted the form:', newOrder)
+
+    //Update completed order to state
+    //[!] remove this if posting to server
+    setOrders([...orders,newOrder])
 
   }
 
@@ -60,6 +87,8 @@ const App = () => {
           <OrderForm 
             formValues={formValues}
             change={change}
+            orders={orders}
+            submit={submit}
           />
         </Route>
 

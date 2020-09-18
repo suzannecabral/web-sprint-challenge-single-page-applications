@@ -1,7 +1,12 @@
 import React from 'react'
 
 export default function OrderForm(props){
-    const { formValues, change }=props
+    const { 
+        formValues, 
+        change,
+        orders,
+        submit,
+    }=props
     // console.log("Order form values:", formValues)
     // console.log("Order form change fn:", change)
 
@@ -24,10 +29,22 @@ export default function OrderForm(props){
     }
 
 
+    const onSubmit = evt => {
+
+        //don't refresh the page on submit
+        // (click or enter key)
+        //this goes on the form element
+        evt.preventDefault()
+
+        //then use the submit function in AppJS
+        submit()
+    }
+
+
     return(
         <div id="orderForm">
             <h2>Build your pizza:</h2>
-            <form>
+            <form onSubmit={onSubmit}>
                 <label htmlFor="name">
                     Your Name:
                     <input 
