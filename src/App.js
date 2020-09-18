@@ -72,7 +72,7 @@ const App = () => {
         setFormValues(initialFormValues)
         // document.getElementById("orderForm").reset()
         // console.log('User submitted the form:', newOrder)
-        console.log("Pizza Orders: ",orders)
+        // console.log("Pizza Orders: ",orders)
       })
 
   }
