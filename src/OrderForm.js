@@ -44,11 +44,20 @@ export default function OrderForm(props){
         submit()
     }
 
+    const toppings={
+        cheese:false,
+        pepperoni:false,
+        mushrooms:false,
+        pineapple:false,
+        canadianBacon:false,
+        jalapenos:false,
+    }
+
 
     return(
-        <div id="orderForm">
+        <div >
             <h2>Build your pizza:</h2>
-            <form onSubmit={onSubmit}>
+            <form id="orderForm" onSubmit={onSubmit}>
                 <label htmlFor="name">
                     Your Name:
                     <input 
@@ -71,54 +80,60 @@ export default function OrderForm(props){
                 </label>
                 <div className="checklist">
                 <h3>Pick your Toppings:</h3>
-                    <label htmlFor="cheeseTopping">
-                        Cheese
-                        <input 
-                            type="checkbox" 
-                            name="cheeseTopping"
-                            onChange={onChange}
-                            />
-                    </label>
-                    <label htmlFor="pepperoniTopping">
-                        Pepperoni
-                        <input 
-                            type="checkbox" 
-                            name="pepperoniTopping"
-                            onChange={onChange}
-                            />
-                    </label>
-                    <label htmlFor="mushroomsTopping">
-                        Mushrooms
-                        <input 
-                            type="checkbox" 
-                            name="mushroomsTopping"
-                            onChange={onChange}
-                            />
-                    </label>
-                    <label htmlFor="pineappleTopping">
-                        Pineapple
-                        <input 
-                            type="checkbox" 
-                            name="pineappleTopping"
-                            onChange={onChange}
-                            />
-                    </label>
-                    <label htmlFor="canadianBaconTopping">
-                        Canadian Bacon
-                        <input 
-                            type="checkbox" 
-                            name="canadianBaconTopping"
-                            onChange={onChange}
-                            />
-                    </label>
-                    <label htmlFor="jalapenosTopping">
-                        Jalapenos
-                        <input 
-                            type="checkbox" 
-                            name="jalapenosTopping"
-                            onChange={onChange}
-                            />
-                    </label> 
+
+                    <fieldset name="toppings">
+
+                        <label htmlFor="cheese">
+                            Cheese
+                            <input 
+                                type="checkbox" 
+                                name="cheese"
+                                onChange={onChange}
+                                />
+                        </label>
+                        <label htmlFor="pepperoni">
+                            Pepperoni
+                            <input 
+                                type="checkbox" 
+                                name="pepperoni"
+                                onChange={onChange}
+                                />
+                        </label>
+                        <label htmlFor="mushrooms">
+                            Mushrooms
+                            <input 
+                                type="checkbox" 
+                                name="mushrooms"
+                                onChange={onChange}
+                                />
+                        </label>
+                        <label htmlFor="pineapple">
+                            Pineapple
+                            <input 
+                                type="checkbox" 
+                                name="pineapple"
+                                onChange={onChange}
+                                />
+                        </label>
+                        <label htmlFor="canadianBacon">
+                            Canadian Bacon
+                            <input 
+                                type="checkbox" 
+                                name="canadianBacon"
+                                onChange={onChange}
+                                />
+                        </label>
+                        <label htmlFor="jalapenos">
+                            Jalapenos
+                            <input 
+                                type="checkbox" 
+                                name="jalapenos"
+                                onChange={onChange}
+                                />
+                        </label>
+
+                    </fieldset>
+
                 </div>
                 <label htmlFor="instructions">
                     Additional Instructions:

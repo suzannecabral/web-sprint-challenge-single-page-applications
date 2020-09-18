@@ -15,3 +15,7 @@ code {
   font-weight:bold;
   color:red;
 }
+
+fieldset {
+  border:none;
+}

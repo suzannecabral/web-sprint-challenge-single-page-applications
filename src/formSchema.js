@@ -7,11 +7,13 @@ export default yup.object().shape({
     pizzaSize: yup.string()
         .required('Please select a pizza size')
         .oneOf(['Small','Medium','Large'], 'Please select a pizza size'),
-    cheeseTopping:yup.boolean(),
-    pepperoniTopping:yup.boolean(),
-    mushroomsTopping:yup.boolean(),
-    pineappleTopping:yup.boolean(),
-    canadianBaconTopping:yup.boolean(),
-    jalapenosTopping:yup.boolean(),
+    // toppings: yup.boolean()
+    //     .required('Please choose at least one topping'),
+    cheese:yup.boolean(),
+    pepperoni:yup.boolean(),
+    mushrooms:yup.boolean(),
+    pineapple:yup.boolean(),
+    canadianBacon:yup.boolean(),
+    jalapenos:yup.boolean(),
     instructions:yup.string(),
 })

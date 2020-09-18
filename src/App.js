@@ -10,6 +10,7 @@ import {
 } from "react-router-dom"
 import * as yup from 'yup'
 import schema from './formSchema'
+import Axios from 'axios'
 
 
   //-----------------------------------//
@@ -19,12 +20,14 @@ const initialFormValues =
 {
   name:'',
   pizzaSize:'',
-  cheeseTopping:false,
-  pepperoniTopping:false,
-  mushroomsTopping:false,
-  pineappleTopping:false,
-  canadianBaconTopping:false,
-  jalapenosTopping:false,
+  // toppings:{
+    cheese:false,
+    pepperoni:false,
+    mushrooms:false,
+    pineapple:false,
+    canadianBacon:false,
+    jalapenos:false,
+  // },
   instructions:'',
 }
 
@@ -35,12 +38,7 @@ const initialFormErrors =
 {
   name:'',
   pizzaSize:'',
-  cheeseTopping:'',
-  pepperoniTopping:'',
-  mushroomsTopping:'',
-  pineappleTopping:'',
-  canadianBaconTopping:'',
-  jalapenosTopping:'',
+  toppings:'',
   instructions:'',
 }
 
@@ -56,6 +54,28 @@ const App = () => {
   //-----------------------------------//
   //          Helpers                  //
   //-----------------------------------//
+
+  const  postNewOrder= newOrder => {
+
+    Axios.post('https://reqres.in/api/pizza',newOrder)
+      .then(res => {
+        //console.log(res.data)
+        setOrders([...orders, res.data])
+
+      })
+
+      .catch(err => {
+        debugger
+        console.log("Axios Error:",err)
+      })
+      .finally(()=>{
+        setFormValues(initialFormValues)
+        // document.getElementById("orderForm").reset()
+        // console.log('User submitted the form:', newOrder)
+        console.log("Pizza Orders: ",orders)
+      })
+
+  }
 
   const validate = (name, value) => {
     yup
@@ -97,22 +117,24 @@ const App = () => {
     const newOrder = {
       name:formValues.name.trim(),
       pizzaSize:formValues.pizzaSize,
-      cheeseTopping:formValues.cheeseTopping,
-      pepperoniTopping:formValues.pepperoniTopping,
-      mushroomsTopping:formValues.mushroomsTopping,
-      pineappleTopping:formValues.pineappleTopping,
-      canadianBaconTopping:formValues.canadianBaconTopping,
-      jalapenosTopping:formValues.jalapenosTopping,
+      // toppings:{
+        cheese:formValues.cheese,
+        pepperoni:formValues.pepperoni,
+        mushrooms:formValues.mushrooms,
+        pineapple:formValues.pineapple,
+        canadianBacon:formValues.canadianBacon,
+        jalapenos:formValues.jalapenos,
+      // },
       instructions:formValues.instructions.trim(),
     }
 
     //test submit
-    console.log('User submitted the form:', newOrder)
+    // console.log('User submitted the form:', newOrder)
 
     //Update completed order to state
     //[!] remove this if posting to server
-    setOrders([...orders,newOrder])
-
+    // setOrders([...orders,newOrder])
+    postNewOrder(newOrder)
   }
 
   //-----------------------------------//
