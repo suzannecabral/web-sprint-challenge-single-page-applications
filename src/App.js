@@ -59,8 +59,8 @@ const App = () => {
 
     Axios.post('https://reqres.in/api/pizza',newOrder)
       .then(res => {
-        //console.log(res.data)
-        setOrders([...orders, res.data])
+        console.log("Form submitted: ", res.data)
+        // setOrders([...orders, res.data])
 
       })
 
