@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function OrderForm(props){
     const { formValues, change }=props
-    console.log("Order form values:", formValues)
-    console.log("Order form change fn:", change)
+    // console.log("Order form values:", formValues)
+    // console.log("Order form change fn:", change)
 
     //-----------------------------------//
     //          Event Handlers           //
@@ -38,7 +38,10 @@ export default function OrderForm(props){
                 </label>
                 <label htmlFor="pizzaSize">
                     Pizza Size:
-                    <select>
+                    <select 
+                        name="pizzaSize"
+                        onChange={onChange}
+                        >
                         <option>Small</option>
                         <option>Medium</option>
                         <option>Large</option>
@@ -48,32 +51,60 @@ export default function OrderForm(props){
                 <h3>Pick your Toppings:</h3>
                     <label htmlFor="cheeseTopping">
                         Cheese
-                        <input type="checkbox" name="cheeseTopping"/>
+                        <input 
+                            type="checkbox" 
+                            name="cheeseTopping"
+                            onChange={onChange}
+                            />
                     </label>
                     <label htmlFor="pepperoniTopping">
                         Pepperoni
-                        <input type="checkbox" name="pepperoniTopping"/>
+                        <input 
+                            type="checkbox" 
+                            name="pepperoniTopping"
+                            onChange={onChange}
+                            />
                     </label>
                     <label htmlFor="mushroomsTopping">
                         Mushrooms
-                        <input type="checkbox" name="mushroomsTopping"/>
+                        <input 
+                            type="checkbox" 
+                            name="mushroomsTopping"
+                            onChange={onChange}
+                            />
                     </label>
                     <label htmlFor="pineappleTopping">
                         Pineapple
-                        <input type="checkbox" name="pineappleTopping"/>
+                        <input 
+                            type="checkbox" 
+                            name="pineappleTopping"
+                            onChange={onChange}
+                            />
                     </label>
                     <label htmlFor="canadianBaconTopping">
                         Canadian Bacon
-                        <input type="checkbox" name="canadianBaconTopping"/>
+                        <input 
+                            type="checkbox" 
+                            name="canadianBaconTopping"
+                            onChange={onChange}
+                            />
                     </label>
                     <label htmlFor="jalapenosTopping">
                         Jalapenos
-                        <input type="checkbox" name="jalapenosTopping"/>
+                        <input 
+                            type="checkbox" 
+                            name="jalapenosTopping"
+                            onChange={onChange}
+                            />
                     </label>
                 </div>
                 <label htmlFor="instructions">
                     Additional Instructions:
-                    <input name="instructions" type="text" />
+                    <input 
+                        name="instructions" 
+                        type="text" 
+                        onChange={onChange}
+                        />
                 </label>
                 <button>Add to Order</button>
             </form>
