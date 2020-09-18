@@ -8,6 +8,8 @@ import {
   Route,
   Link 
 } from "react-router-dom"
+import * as yup from 'yup'
+import schema from './formSchema'
 
 
   //-----------------------------------//
@@ -27,6 +29,20 @@ const initialFormValues =
 }
 
 const initialOrders=[]
+const initialDisabled=true
+
+const initialFormErrors = 
+{
+  name:'',
+  pizzaSize:'',
+  cheeseTopping:'',
+  pepperoniTopping:'',
+  mushroomsTopping:'',
+  pineappleTopping:'',
+  canadianBaconTopping:'',
+  jalapenosTopping:'',
+  instructions:'',
+}
 
 const App = () => {
   //-----------------------------------//
@@ -34,6 +50,26 @@ const App = () => {
   //-----------------------------------//
   const [ formValues, setFormValues ] = useState(initialFormValues)
   const [ orders, setOrders ] = useState(initialOrders)
+  const [ disabled, setDisabled ] = useState(initialDisabled)
+  const [ formErrors, setFormErrors ] = useState(initialFormErrors)
+
+  //-----------------------------------//
+  //          Helpers                  //
+  //-----------------------------------//
+
+  const validate = (name, value) => {
+    yup
+      .reach(schema, name)
+      .validate(value)
+      .then(valid => {
+        setFormErrors({...formErrors, [name]: ""})
+      })
+      .catch(err => {
+        // debugger
+        setFormErrors({...formErrors,[name]: err.errors[0]})
+        // console.log(err)
+      })
+  }
 
   //-----------------------------------//
   //          Event Handlers           //
@@ -42,7 +78,7 @@ const App = () => {
   const change = (name, value) => {
 
     //validate
-    // [!] add this
+    validate(name,value)
 
     //send to formValues state
     setFormValues({...formValues, [name]:value})
@@ -89,6 +125,7 @@ const App = () => {
             change={change}
             orders={orders}
             submit={submit}
+            disabled={disabled}
           />
         </Route>
 

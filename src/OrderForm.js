@@ -6,7 +6,9 @@ export default function OrderForm(props){
         change,
         orders,
         submit,
+        disabled
     }=props
+    console.log("Order form button disabled:", disabled)
     // console.log("Order form values:", formValues)
     // console.log("Order form change fn:", change)
 
