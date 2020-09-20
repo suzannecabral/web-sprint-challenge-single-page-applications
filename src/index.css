@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+#errorFrame {
+  font-weight:bold;
+  color:red;
+}
+
+fieldset {
+  border:none;
+}
